@@ -1,16 +1,16 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='FRSP',
+    name='ASCARF',
     version='1.0',
-    description='Example package',
-    author='Your Name',
-    author_email='',
-    url='',
+    description='Atoms and structures described distribution density',
+    author='L Novakovic',
+    author_email='lazarnovakovic3@gmail.com',
+    url='https://github.com/LazarNov/ASCARF',
     packages=find_packages(),
     install_requires=[
     'pandas==1.3.5',
-        'scipy==1.7.3','tensorflow==2.9.2',
+        'scipy==1.7.3','tensorflow==2.11.0',
     
     'sklearn',
     
@@ -26,7 +26,6 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        #'License :: OSI Approved :: MIT License',
-        #'Programming Language :: Python :: 3',
+       
     ],
 )
