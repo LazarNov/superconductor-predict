@@ -1,0 +1,46 @@
+
+#======================================================================
+# CRYSTAL DATA
+#----------------------------------------------------------------------
+data_VESTA_phase_1
+
+_chemical_name_common                  'New structure'
+_cell_length_a                         2.984988
+_cell_length_b                         2.984988
+_cell_length_c                         6.108825
+_cell_angle_alpha                      98.254341
+_cell_angle_beta                       98.254341
+_cell_angle_gamma                      74.214897
+_cell_volume                           51.522228
+_space_group_name_H-M_alt              'P 1'
+_space_group_IT_number                 1
+
+loop_
+_space_group_symop_operation_xyz
+   'x, y, z'
+
+loop_
+   _atom_site_label
+   _atom_site_occupancy
+   _atom_site_fract_x
+   _atom_site_fract_y
+   _atom_site_fract_z
+   _atom_site_adp_type
+   _atom_site_U_iso_or_equiv
+   _atom_site_type_symbol
+   La         1.0     0.298920     0.799769     0.236819    Uiso  ? La
+   La         1.0     0.699382     0.200232     0.763183    Uiso  ? La
+   H          1.0     0.164827     0.164368     0.536417    Uiso  ? H
+   H          1.0     0.833473     0.835632     0.463582    Uiso  ? H
+   H          1.0     0.653291     0.154140     0.088590    Uiso  ? H
+   H          1.0     0.345011     0.845860     0.911411    Uiso  ? H
+   H          1.0     0.259610     0.760459     0.605420    Uiso  ? H
+   H          1.0     0.738690     0.239539     0.394579    Uiso  ? H
+   H          1.0     0.087408     0.588257     0.666125    Uiso  ? H
+   H          1.0     0.910894     0.411743     0.333874    Uiso  ? H
+   H          1.0     0.249595     0.249557     0.000001    Uiso  ? H
+   H          1.0     0.748707     0.750444     0.000001    Uiso  ? H
+   H          1.0     0.118690     0.619539     0.908816    Uiso  ? H
+   H          1.0     0.879612     0.380461     0.091185    Uiso  ? H
+   H          1.0     0.334783     0.334322     0.463582    Uiso  ? H
+   H          1.0     0.663519     0.665676     0.536417    Uiso  ? H
