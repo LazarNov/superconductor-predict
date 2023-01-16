@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='ASCARF',
+    name='superconductor-predict',
     version='1.0',
     description='Atoms and structures described distribution density',
     author='L Novakovic',
     author_email='lazarnovakovic3@gmail.com',
-    url='https://github.com/LazarNov/ASCARF',
+    url='https://github.com/LazarNov/superconductor-predict',
     packages=find_packages(),
     install_requires=[
     'pandas==1.3.5',
