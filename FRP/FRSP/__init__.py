@@ -42,7 +42,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-Pathv='/mnt/c/Users/Lazar/Desktop/model/FRPTS/FRP/FRSP' #os.environ.get('PYTHONPATH')+'python3.7/site_packages/FRSP/FRSP'
+#print(__path__)
+Pathv=__path__[0]#'/mnt/c/Users/Lazar/Desktop/model/FRPTS/FRP/FRSP' #os.environ.get('PYTHONPATH')+'python3.7/site_packages/FRSP/FRSP'
 #importfromdrive()
 # Some files for processing without running every time.
 #ccdat = pd.read_csv('/content/drive/My Drive/unique_m1.csv') # Elemental contributions, compounds, and Tcs from supercon. 
@@ -1396,7 +1397,7 @@ class FourierSt(structuresinput):
           verbose=1,
           validation_data=([descriptor_testA, descriptor_testb], Tc_test),callbacks=[checkpoint],
           shuffle=True)
-      models.load_weights("modelfile")
+      models.load_weights(Pathv+'/modelfile')
     return models,optimalTarget(database=database,custom=custom,FM_database=FM_database,FMucustom=FMucustom,numrd_database=numrd_database,numrdcustom=numrdcustom,database_Tcs=database_Tcs,custom_Tcs=custom_Tcs)
   def predict_structure(self,model_k,S=[],structureFiles=True,typea="original",returninput=False):
     if structureFiles:
@@ -1454,7 +1455,7 @@ class FourierSt(structuresinput):
           verbose=1,
           validation_data=([descriptor_testA, descriptor_testb], Tc_test),callbacks=[checkpoint], 
           shuffle=True)
-    modeli.load_weights("modelfile")
+    modeli.load_weights(Pathv+"/modelfile")
     return modeli
 
   def OptTc(self,v,numd,zas,model,optmax,target=0,typea='original'):
@@ -1531,11 +1532,6 @@ class FourierSt(structuresinput):
 
 # HighTC=np.load('High_Tc1F3-3m.npy',allow_pickle= True)
 # HighTC
-
-"""# New Section
-
-# New Section
-"""
 
 def yesbestTcsb(datamat,allAvgTc,crtklv,weights,a,n,et):
   tcs1 = []
