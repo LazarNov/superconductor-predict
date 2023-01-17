@@ -1,0 +1,9 @@
+README.md
+setup.py
+FRSP/__init__.py
+FRSP/zee.py
+superconductor_predict.egg-info/PKG-INFO
+superconductor_predict.egg-info/SOURCES.txt
+superconductor_predict.egg-info/dependency_links.txt
+superconductor_predict.egg-info/requires.txt
+superconductor_predict.egg-info/top_level.txt

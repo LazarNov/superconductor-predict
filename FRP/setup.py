@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='superconductor-predict',
+    name='superconductor_predict',
     version='1.0',
     description='Atoms and structures described distribution density',
     author='L Novakovic',

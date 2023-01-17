@@ -42,7 +42,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
-Pathv='/mnt/c/Users/Lazar/Desktop/model/FRSP/FRSP' #os.environ.get('PYTHONPATH')+'python3.7/site_packages/FRSP/FRSP'
+Pathv='/mnt/c/Users/Lazar/Desktop/model/FRPTS/FRP/FRSP' #os.environ.get('PYTHONPATH')+'python3.7/site_packages/FRSP/FRSP'
 #importfromdrive()
 # Some files for processing without running every time.
 #ccdat = pd.read_csv('/content/drive/My Drive/unique_m1.csv') # Elemental contributions, compounds, and Tcs from supercon. 
@@ -560,16 +560,16 @@ def bestTcsb(datamat,allAvgTc,crtklv,weights):
 #       data.append(data2)
 #   return data
 #import mp_api
-from tqdm import tqdm
-def matpro(Q):
-  from mp_api.client import MPRester
-  data=[]
-  with MPRester("ImK1c5FcoBQ44NkZIYbsvZa16vI409pI") as m: 
-    for mats in tqdm(Q):
-      print(mats)
-      data2 = m.query()
-      data.append(data2)
-  return data
+# from tqdm import tqdm
+# def matpro(Q):
+#   from mp_api.client import MPRester
+#   data=[]
+#   with MPRester("ImK1c5FcoBQ44NkZIYbsvZa16vI409pI") as m: 
+#     for mats in tqdm(Q):
+#       print(mats)
+#       data2 = m.query()
+#       data.append(data2)
+#   return data
 #names=ccdat.material
 #data=matpro(names)
 
@@ -581,11 +581,11 @@ from rpy2.robjects import pandas2ri
 
 
 pandas2ri.activate()
-utils = packages.importr('utils')
-base =  packages.importr('base')
+#utils = packages.importr('utils')
+#base =  packages.importr('base')
 #utils.chooseCRANmirror()
-utils.install_packages("CHNOSZ")
-utils.install_packages("xgboost")
+# utils.install_packages("CHNOSZ")
+# utils.install_packages("xgboost")
 CHN=packages.importr("CHNOSZ")
 xgb=packages.importr("xgboost")
 #ccdat = pd.read_csv('/content/drive/My Drive/unique_m1.csv') # Elemental contributions, compounds, and Tcs from supercon. 
