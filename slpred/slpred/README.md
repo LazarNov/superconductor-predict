@@ -1,5 +1,5 @@
 # model
-"""Predict with saved models try ms=FourierSt() modeltype=``predictivesave'' for saved predictive model"""
+""" Predict with saved models try ms=FourierSt() modeltype=``predictivesave'' for saved predictive model"""
 ms=FourierSt()
 modelms=ms.samplemodels(modeltype='predictivesave',typea='original')
 
