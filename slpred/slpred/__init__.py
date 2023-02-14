@@ -1,27 +1,21 @@
 
 
 import tensorflow as tf
-import pymatgen,random,os,chemparse,shutil,scipy,cvnn,cmath,mendeleev,time,gc
+import pymatgen,random,os,chemparse,scipy,cvnn,cmath,mendeleev,time,gc
 from tensorflow import keras
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 import pandas as pd
-from numbers import Integral
-from functools import partial
-from scipy.signal.signaltools import convolve2d
-from numpy.lib.shape_base import kron
-from scipy.ndimage import convolve
 
 import tqdm
 from tqdm import tqdm
 import cvnn.layers as c_l
 
-from numba import jit,vectorize, float64
-from numpy import mean,std
-from sklearn.datasets import make_regression
-from sklearn.model_selection import cross_val_score, RepeatedKFold,train_test_split
-# from sklearn.ensemble import RandomForestRegressor
-# from sklearn.metrics import accuracy_score
+from numba import jit
+
+from numpy import mean
+from sklearn.model_selection import train_test_split
+
 
 
 # Elements used, later should be expanded since superconductors with atoms above Rn are in dataset
@@ -210,45 +204,6 @@ def chemNorm(cform):
 
 
 
-# # readablematerials: dataframe of the material names and Tcs T(y), y=composition, reported on the database.
-# # returns: Dictionaries with mean(T(y)), variance(T(y)), T(y).
-# def supercon_average_Tc(readablematerials,debugcheck=False):
-#   import statistics
-#   dupmats = []
-#   global averagedTcs
-#   crtclVECTOR = {}
-#   TcsVector = {}
-#   averagedTcs ={}
-#   varianceTc = {}
-#   filledarray = []
-#   # Get the list of all Tcs for each compound from supercon.
-
-#   for compnames1 in readablematerials["material"]:
-#     if compnames1 in filledarray: #tcbynameavg:
-#       dupmats.append(compnames1)
-#     varianceTc[compnames1]=0
-#     filledarray.append(compnames1)
-
-#   for dups in range(0,len(dupmats)): 
-#     avgmat = []
-#     hits = (i for i,value in enumerate(readablematerials["material"]) if value == dupmats[dups])
-
-#     for hit in hits:
-#       avgmat.append(readablematerials["critical_temp"][hit])
-#     avgoflist = statistics.mean(avgmat)
-#   # The T(y), variance(T(y)), mean(T(y))
-#     crtclVECTOR[dupmats[dups]]=avgmat
-#     varianceTc[dupmats[dups]] = statistics.variance(avgmat)
-#     averagedTcs[dupmats[dups]] = avgoflist
-  
-#   return averagedTcs, varianceTc, crtclVECTOR
-
-
-#   # iterating through the elements of list 
-#   for colnam in elementcolumnnames: 
-#       posattmatf[colnam] = -12000 #-1
-#   print(posattmatf) #posattmat before
-#   return posattmatf
 
 
 def numrdata(datamat,numdit): # posattmat
@@ -260,7 +215,7 @@ def numrdata(datamat,numdit): # posattmat
     comp1 = datamat[ind]['structure'].composition
     ncomp3 = comp1.reduced_formula
     print(ncomp3)
-    # matcomp3 = chemparse
+  
 
     feats.append(datamat[ind]['structure'].lattice.a)
     feats.append(datamat[ind]['structure'].lattice.b)
@@ -287,7 +242,6 @@ def bestTcs(datamat,allAvgTc,crtklv):
   for ind in range(0,len(datamat)):
     comp1 = datamat[ind]['structure'].composition
     ncomp3 = comp1.reduced_formula
-    #print(ncomp3)
 
     if ncomp3 in list(crtklv.keys()):
       Tcchoice=random.choice(crtklv[ncomp3])
@@ -351,7 +305,6 @@ ss_e_d=rpy2.robjects.r['subset_element_data']
 Extract=rpy2.robjects.r['extract'] # This function takes composition and evaluates the characterstics.
 
 import keras_tuner as kt
-from tensorflow import keras
 from keras.layers import Activation
 from keras.models import Model
 # Creating a sample model for the compositional part of data
@@ -359,31 +312,22 @@ def createmlmaterial(d,inputshape):
   
   model=Dense(256,input_dim=inputshape,activation="relu")(d)
   model = BatchNormalization(center=True, scale=True)(model)
-  #model=Dropout(0.5)(model)
+
   model=Dense(256,activation="relu")(model)
   model = BatchNormalization(center=True, scale=True)(model)
-  #model=Dropout(0.5)(model)
+
   model=Dense(256,activation="relu")(model)
   model = BatchNormalization(center=True, scale=True)(model)
-  #model=Dropout(0.5)(model)
+
   model=Dense(256,activation="relu")(model)
   model = BatchNormalization(center=True, scale=True)(model)
-  #model=Dropout(0.5)(model)
-  # model=Dense(512,activation="relu")(model)
-  # model = BatchNormalization(center=True, scale=True)(model)
-  # model=Dense(512,activation="relu")(model)
-  # model = BatchNormalization(center=True, scale=True)(model)
+
   return model
 # Creating a sample model for the density part.
 def createconvolutionlayers(inputs,inputshape):
   keras.backend.clear_session()
   gc.collect()
-  # x = c_l.ComplexConv3D(32, kernel_size=(3 ,3, 3), activation='cart_relu',input_shape=inputshape)#
-  # x = (c_l.ComplexAvgPooling3D(pool_size=(2, 2, 2)))(x)
-  # x = c_l.ComplexBatchNormalization(center=True, scale=True)(x)
-  # x=c_l.ComplexDropout(0.50)(x)
-  # x = c_l.ComplexFlatten()(x)
-  # x = c_l.ComplexDense(units=540,activation='convert_to_real_with_abs')(x)
+ 
   x = inputs
   x = c_l.ComplexConv3D(32, kernel_size=(3), activation='cart_relu')(x)
   x = c_l.ComplexAvgPooling3D(pool_size=(2))(x)
@@ -391,18 +335,10 @@ def createconvolutionlayers(inputs,inputshape):
   
   x = c_l.ComplexConv3D(32, kernel_size=(3), activation='convert_to_real_with_abs')(x)
   x = c_l.ComplexAvgPooling3D(pool_size=(2))(x)
-  # x = c_l.ComplexBatchNormalization(center=True, scale=True)(x)
   x=c_l.ComplexDropout(0.50)(x)
   x = c_l.ComplexFlatten()(x)
-  #x=concatenate([c_l.ComplexFlatten()(inputs),x])
-  #x = c_l.ComplexDense(units=128,activation='zrelu')(x)
-  #x = c_l.ComplexDense(units=128,activation='zrelu')(x)
-  # x = c_l.ComplexDense(units=128,activation='zrelu')(x)
-  # x = c_l.ComplexDense(units=128,activation='zrelu')(x)
-
-  #x = c_l.ComplexDense(units=256,activation='convert_to_real_with_abs')(x)
-
-  return x#model
+ 
+  return x
   
 from keras.layers import concatenate
 # concatinating together 
