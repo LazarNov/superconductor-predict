@@ -1,3 +1,6 @@
+Hello. This is the code for prediction of superconducting transition temperatures, $T_c$, of structures. This work can be found at https://arxiv.org/abs/2301.10474 and uses the code from https://github.com/khamidieh/predict_tc to add stoichiometric features as well.
+Making this accessible is the goal, feel free to contact me about anything  
+
 # Using the model
 Use Predicting.ipynb to predict superconducting temperature of a file
 
