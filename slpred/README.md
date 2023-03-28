@@ -1,6 +1,8 @@
+Hello. This is the code for prediction of superconducting transition temperatures, $T_c$, of structures. This work can be found at https://arxiv.org/abs/2301.10474.
+Making this accessible is the goal, feel free to contact me about anything  
+
 # Using the model
 Use Predicting.ipynb to predict superconducting temperature of a file
-
 
 
 
@@ -17,7 +19,7 @@ modelms=ms.samplemodels(modeltype='predictivesavepr',typea='original')
 
 ``modeltype='predictivesavepr'`` for saved predictive model with more accuracte gaussians. 
 typea refers to the density components coefficients. 
-``type='original'`` is used in the saved models and uses complex numbers for each spatial charactersitic modeled,
+``type='original'`` is used in the saved models and uses complex numbers for each spatial characteristic,
 1 for mass and 1 for charge in this case.
 
 
@@ -30,7 +32,7 @@ ms.predict_structure(modelms,['C1S1H7.cif'])
 
 ```
 
-#### For predicting Tc from a list of pymatgen structures [pmgs] 
+#### For predicting $T_c$ from a list of pymatgen structures [pmgs] 
 
 ``ms.data_remove_duplicates().structures[0:10]`` are the first 10 from the default structures saved.
 
@@ -41,14 +43,14 @@ ms.predict_structure(modelms,ms.data_remove_duplicates().structures[0:10],struct
 
 ## Optimizing the structures
 
-#### Optimizing for maximum Tc
+#### Optimizing for maximum $T_c$
 
 ```python
 ms.superconductoropt(modelms,['C1S1H7.cif'])
 
 ```
 
-#### Optimizing for picked Tc
+#### Optimizing for picked $T_c$
 
 ```python
 ms.superconductoropt(modelms,['C1S1H7.cif'],optmax=False,target=180)
