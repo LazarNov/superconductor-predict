@@ -65,7 +65,7 @@ typea refers to the density components coefficients.
 
 ## Predict with saved models 
 
-#### For predicting Tc from a list [cifs] 
+#### For predicting $T_c$ from a list [cifs] 
 
 ```python
 ms.predict_structure(modelms,['C1S1H7.cif'])
