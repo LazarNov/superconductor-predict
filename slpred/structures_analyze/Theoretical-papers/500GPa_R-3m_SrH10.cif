@@ -1,0 +1,41 @@
+
+#======================================================================
+# CRYSTAL DATA
+#----------------------------------------------------------------------
+data_VESTA_phase_1
+
+_chemical_name_common                  'New structure'
+_cell_length_a                         3.003295
+_cell_length_b                         3.003295
+_cell_length_c                         3.003295
+_cell_angle_alpha                      64.033813
+_cell_angle_beta                       64.033813
+_cell_angle_gamma                      64.033813
+_cell_volume                           20.856096
+_space_group_name_H-M_alt              'P 1'
+_space_group_IT_number                 1
+
+loop_
+_space_group_symop_operation_xyz
+   'x, y, z'
+
+loop_
+   _atom_site_label
+   _atom_site_occupancy
+   _atom_site_fract_x
+   _atom_site_fract_y
+   _atom_site_fract_z
+   _atom_site_adp_type
+   _atom_site_U_iso_or_equiv
+   _atom_site_type_symbol
+   Sr         1.0     0.000000     -0.000000     0.000000    Uiso  ? Sr
+   H          1.0     0.605450     0.605450     0.119034    Uiso  ? H
+   H          1.0     0.246654     0.246654     0.246654    Uiso  ? H
+   H          1.0     0.399890     0.399890     0.399890    Uiso  ? H
+   H          1.0     0.880966     0.394550     0.394550    Uiso  ? H
+   H          1.0     0.394550     0.880966     0.394550    Uiso  ? H
+   H          1.0     0.605450     0.119034     0.605450    Uiso  ? H
+   H          1.0     0.119034     0.605450     0.605450    Uiso  ? H
+   H          1.0     0.600110     0.600110     0.600110    Uiso  ? H
+   H          1.0     0.753346     0.753346     0.753346    Uiso  ? H
+   H          1.0     0.394550     0.394550     0.880966    Uiso  ? H

@@ -1,5 +1,5 @@
 # model
-<Use Predicting.ipynb to predict superconducting temperature of a file>
+Use Predicting.ipynb to predict superconducting temperature of a file
 
 # Predict with saved models try ms=FourierSt() modeltype=``predictivesave'' for saved predictive model
 ms=FourierSt()
