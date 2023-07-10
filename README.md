@@ -134,12 +134,13 @@ pymatgen.io.cif.CifWriter(ms.last_opt['structure']).write_file('optout.cif')
 
 ## Generate and fit sample model and data
 
+#### Returns trained model and data
 ```python
 F=FourierSt(pr=True)
 modeli,outputs=F.buildsample(modeltype='predictive',typea='original')
 ```
 
-#### Build and fit prebuilt model build sample data
+#### Build sample data
 
 ```python
 F=FourierSt(pr=True)
